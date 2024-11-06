@@ -88,6 +88,8 @@ jobs:
     docker:
       name: Containerization
       runs-on: ubuntu-latest
+      permissions:
+        packages: write
       needs: [unit-testing, code-coverage]
       steps:
         - name: Checkout Repo
