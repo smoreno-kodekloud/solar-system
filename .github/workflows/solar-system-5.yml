@@ -137,7 +137,7 @@ jobs:
           uses: actions/checkout@v4
 
         - name: Install kubectl CLI
-          uses: azure/steup-kubectl@v3
+          uses: azure/setup-kubectl@v3
           with:
             version: 'v1.26.0'
         
