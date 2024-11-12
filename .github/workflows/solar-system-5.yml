@@ -150,4 +150,25 @@ jobs:
             echo -------------------------------------------
             kubectl get nodes
             
-  
+
+    prod-deploy:
+      needs: dev-deploy
+      runs-on: ubuntu-latest
+      environment:
+        name: production
+        url: https://$(URL)
+      steps:
+        - name: Checkout Repo
+          uses: actions/checkout@v4
+
+        - name: Install kubectl CLI
+          uses: azure/setup-kubectl@v3
+          with:
+            version: 'v1.26.0'
+        
+        - name: Fetch Kubernetes Cluster Details
+          run: |
+            kubectl version --short
+            echo -------------------------------------------
+            kubectl get nodes
+        
