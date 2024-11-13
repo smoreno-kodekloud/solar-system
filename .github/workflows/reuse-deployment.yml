@@ -1,7 +1,7 @@
 name: Reuse Deployment
 
 on:
-    workflow_dispatch:
+    workflow_call:
         secrets:
             test:
                 required: true
