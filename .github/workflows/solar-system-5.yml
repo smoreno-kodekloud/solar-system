@@ -134,7 +134,7 @@ jobs:
       needs: docker
       uses: ./.github/workflows/reuse-deployment.yml
       secrets:
-        test: ${{ secrets.test}}
+        test: ${{ secrets.test }}
         MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD }}
 
     prod-deploy:
