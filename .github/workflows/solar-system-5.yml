@@ -132,10 +132,27 @@ jobs:
     dev-deploy:
       if: contains(github.ref, 'feature/')
       needs: docker
-      uses: ./.github/workflows/reuse-deployment.yml
-      secrets:
-        test: ${{ secrets.test }}
-        MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD }}
+      runs-on: ubuntu-latest
+      environment:
+        name: development
+        url: https://
+      steps:
+        - name: Checkout Repo
+          uses: actions/checkout@v4
+
+        - name: Install kubectl CLI
+          uses: azure/setup-kubectl@v3
+          with:
+            version: 'v1.26.0'
+
+        - name: Test
+          run: echo ${{inputs.mongodb-uri}}    
+        
+        - name: Fetch Kubernetes Cluster Details
+          run: |
+            #kubectl version --short
+            echo -------------------------------------------
+            #kubectl get nodes      
 
     prod-deploy:
       if: github.ref == 'refs/heads/main'
