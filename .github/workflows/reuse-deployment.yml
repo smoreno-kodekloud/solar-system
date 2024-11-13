@@ -2,6 +2,11 @@ name: Reuse Deployment
 
 on:
     workflow_dispatch:
+        secrets:
+            test:
+                required: true
+            MONGO_PASSWORD:
+                required: true
 
 jobs:
     reuse-deploy:
