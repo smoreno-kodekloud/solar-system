@@ -1,4 +1,4 @@
-name: Solar System Workflow Sixth Part
+name: Solar System Workflow Fifth Part
 
 on: 
     workflow_dispatch:
