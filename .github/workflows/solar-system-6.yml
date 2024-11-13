@@ -136,6 +136,8 @@ jobs:
       secrets:
         test: ${{ secrets.test }}
         MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD }}
+      with:
+        mongodb-uri: ${{ vars.TEST_VARIABLE }}
 
     prod-deploy:
       if: github.ref == 'refs/heads/main'
